@@ -15,7 +15,7 @@ trigger auctionAddOrUpdateTrigger on SDO_SCOM_Auction__c (after insert, after up
             String oldStatus = oldAuction.get('Status__c').toString();
             String newStatus = auction.get('Status__c').toString();
             if(oldStatus != newStatus && newStatus == 'Closed') {
-                System.debug('Auction marked as closed, triggering add to cart action');
+               
                 Sdo_Scom_Auction_Service.addAuctionProductToUserCart(auction.get('Id').toString());
             }
         }
